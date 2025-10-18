@@ -5,32 +5,34 @@ import '../styles/Home.css';
 
 const products = [
   {
-    name: 'Pear-of-Cake',
+    name: 'Piece of Cake',
     price: '$10.99',
-    description: 'A little slice of heaven to calm you when you take the cake they want...',
-    imageClass: "largePear",
+    description: 'Everything is easy when you have the cake they want.',
+    image: `${process.env.PUBLIC_URL}/pear-cover.png`,
   },
   {
     name: 'Freaky Cake',
     price: '$10.99',
     description: 'You lost the freak, I lost the freak, we all got the freak.',
-    imageClass: "smallPear",
+    image: `${process.env.PUBLIC_URL}/pear-small.png`,
   },
   {
     name: 'Cake of Melancholia',
     price: '$10.99',
-    description: 'This is where all the gonna happen...',
-    imageClass: "mushrooms",
+    description: 'You know where things gonna happen...',
+    image: `${process.env.PUBLIC_URL}/mushroom.png`,
   },
 ];
 
 const ProductCard = ({ product }) => (
-  <Card className="border-0 rounded-0 h-100">
-    <div className={`productImagePlaceholder ${product.imageClass}`} />
-    <Card.Body className="p-0 pt-3">
-      <h4 className="fw-bold mb-1">{product.name}</h4>
-      <p className="text-muted small">{product.description}</p>
-      <p className="fw-bold fs-5">{product.price}</p>
+  <Card className="product-card border-0 rounded-0 h-100">
+    <div className="product-img-wrapper">
+      <img src={product.image} alt={product.name} className="img-fluid product-img" />
+    </div>
+    <Card.Body className="px-0 pt-3">
+      <h5 className="fw-semibold mb-1">{product.name}</h5>
+      <p className="text-muted small mb-1">{product.description}</p>
+      <p className="fw-bold fs-6">{product.price}</p>
     </Card.Body>
   </Card>
 );
@@ -42,58 +44,77 @@ const Home = () => {
 
       {/* Hero Section */}
       <header className="heroSection d-flex align-items-center justify-content-center text-white text-center">
-        <div className="py-5">
-          <h1 className="display-4 fw-bold">IGIT IN MY OVEN!</h1>
-          <p className="lead mb-4">Flavored Cakes for Sweethearts.</p>
-          <Button variant="dark" className="rounded-0 text-uppercase px-4 py-2">Shop Cakes</Button>
+        <div className="hero-content">
+          <h1 className="display-5 fw-bold">IGIT IN MY OVEN</h1>
+          <p className="lead">Home baked sweethearts</p>
+          <Button variant="dark" className="rounded-0 text-uppercase px-4 py-2 w-auto">
+            Shop Cake
+          </Button>
         </div>
       </header>
 
-      {/* New Flavors & Best Seller Section */}
-      <section className="bg-light py-5">
+      {/* Flavor Section */}
+      <section className="flavor-section py-5">
         <Container fluid className="px-5">
-          <Row className="g-5">
-            {/* New Flavors Text & Button */}
-            <Col lg={6} className="d-flex flex-column justify-content-center">
-              <h2 className="display-6 fw-bold">Check our new flavors!</h2>
-              <p className="lead mb-3">
-                A new selection of special, savory, & sweet <br/> fruit for Halloween-Themed Spreads.
+          <Row className="g-4 align-items-center">
+            {/* Left Text */}
+            <Col lg={6}>
+              <h2 className="section-title mb-2">Check our new flavors!</h2>
+              <p className="section-desc">
+                November is here! We're gladly to present you our{' '}
+                <span className="highlight">Halloween Themed</span> flavors!
               </p>
-              <Button variant="dark" className="rounded-0 text-uppercase px-4 py-2 w-auto">New Flavors</Button>
+              <Button variant="dark" className="rounded-0 px-3 py-2 w-auto">
+                New Flavors
+              </Button>
             </Col>
 
-            {/* Images and Best Seller */}
-            <Col lg={6}>
-              <Row className="g-4">
-                <Col md={6} className="imageBlock">
-                  <div className="smallPearsImage" />
-                </Col>
-                <Col md={6} className="d-none d-md-block"></Col>
-                
-                <Col md={6} className="imageBlock">
-                  <div className="watermelonImage" />
-                </Col>
+            {/* Right Top Image */}
+            <Col lg={6} className="text-center">
+              <div className="flavor-img-wrapper mb-4">
+                <img
+                  src={`${process.env.PUBLIC_URL}/1.png`}
+                  alt="cake"
+                  className="img-fluid flavor-image"
+                />
+              </div>
+            </Col>
 
-                <Col md={6} className="d-flex flex-column justify-content-center">
-                  <h3 className="h4 fw-bold">Our Best Seller!</h3>
-                  <p className="text-muted small mb-3">Spooky, Sweet, & Delicious! Cake soothes the Scariest.</p>
-                  <Button variant="dark" className="rounded-0 text-uppercase px-3 py-2 w-auto">Shop Cake</Button>
-                </Col>
-              </Row>
+            {/* Bottom Left Image */}
+            <Col lg={6} className="text-center">
+              <div className="flavor-img-wrapper">
+                <img
+                  src={`${process.env.PUBLIC_URL}/2.png`}
+                  alt="watermelon"
+                  className="img-fluid flavor-image"
+                />
+              </div>
+            </Col>
+
+            {/* Bottom Right Best Seller */}
+            <Col lg={6}>
+              <h3 className="best-title mb-2">Our Best Seller!</h3>
+              <p className="best-desc">
+                Smoked Beef & Effervescent Cake smells like forever.
+              </p>
+              <Button variant="dark" className="rounded-0 px-3 py-2 w-auto">
+                Shop Cake
+              </Button>
             </Col>
           </Row>
         </Container>
       </section>
 
-      {/* Products Grid Section */}
+      {/* Products Grid */}
       <section className="py-5">
         <Container fluid className="px-5">
-          <h2 className="display-6 fw-bold mb-4">Cakes everywhere but I only see you</h2>
+          <h2 className="display-6 fw-bold mb-4">
+            Cakes everywhere but I only see you (.cover)
+          </h2>
           <Row className="g-4">
             <Col lg={6}>
               <ProductCard product={products[0]} />
             </Col>
-
             <Col lg={3}>
               <ProductCard product={products[1]} />
             </Col>
@@ -105,8 +126,10 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-top py-4 px-5">
-        <Button variant="dark" className="rounded-0 text-uppercase px-4 py-2 mb-3">About Us</Button>
+      <footer className="border-top py-4 text-center">
+        <Button variant="dark" className="rounded-0 text-uppercase px-4 py-2 mb-2 w-auto">
+          About Us
+        </Button>
       </footer>
     </div>
   );
