@@ -1,6 +1,7 @@
+// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from "./iGit-In-My-Oven/App";
+import App from './iGit In My Cart/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
