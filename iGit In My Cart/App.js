@@ -7,7 +7,6 @@ import { CartProvider } from './context/CartContext';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 
-
 function App() {
   return (
     <CartProvider>
