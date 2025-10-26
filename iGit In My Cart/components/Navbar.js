@@ -1,21 +1,42 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import '../styles/Navbar.css';
+import '../styles/style.css';
 
 const AppNavbar = () => {
   return (
-    <Navbar expand="lg" className="customNavbar fixed-top" variant="dark">
+    <Navbar
+      expand="lg"
+      className="customNavbar custom-nav fixed-top"
+      variant="dark"
+    >
       <Container fluid className="px-5">
-        <Navbar.Brand as={Link} to="/" className="logoText">IGIT</Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/" className="navbar-logo">
+          <img src="/logo.png" alt="IGIT Logo" />
+        </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav>
-            <Nav.Link as={Link} to="/" className="mx-3">Home</Nav.Link>
-            <Nav.Link as={Link} to="/search" className="mx-3">Search</Nav.Link>
-            <Nav.Link as={Link} to="/products" className="mx-3">Shop</Nav.Link>
-            <Nav.Link as={Link} to="/cart" className="mx-3">Cart</Nav.Link>
-            <Nav.Link as={Link} to="/about" className="mx-3">About Us</Nav.Link>
+
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          className="justify-content-end"
+        >
+          <Nav as="ul" className="navbar-links">
+            <Nav.Item as="li">
+              <NavLink to="/" className="nav-link">Home</NavLink>
+            </Nav.Item>
+
+            <Nav.Item as="li">
+              <NavLink to="/products" className="nav-link">Shop</NavLink>
+            </Nav.Item>
+
+            <Nav.Item as="li">
+              <NavLink to="/cart" className="nav-link">Cart</NavLink>
+            </Nav.Item>
+
+            <Nav.Item as="li">
+              <NavLink to="/about" className="nav-link">About Us</NavLink>
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>
